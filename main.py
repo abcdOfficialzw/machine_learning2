@@ -25,7 +25,7 @@ from keras.applications.vgg16 import decode_predictions
 ## Function to detect object
 def detect_Object():
   count = 0
-  while count < 70:
+  while count < len(os.listdir('./frames')):
     image = load_img('frames/frame%d.jpg' %count, target_size=(224, 224))
     image = img_to_array(image)
     # convert the image pixels to a numpy array
@@ -60,10 +60,14 @@ def generate_frames(video):
   count = 0
 
   while success:
-    cv2.imwrite("frames/frame%d.jpg" % count, image)  # save frame as JPEG file
-    success, image = vidcap.read()
-    print('Read a new frame: ', success)
-    count += 1
+    if os.path.exists('./frames'):
+      cv2.imwrite("frames/frame%d.jpg" % count, image)  # save frame as JPEG file
+      success, image = vidcap.read()
+      print('Read a new frame: ', success)
+      count += 1
+    else:
+      os.mkdir('frames')
+      return
 
   return
 
