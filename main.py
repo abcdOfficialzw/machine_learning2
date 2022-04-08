@@ -89,20 +89,24 @@ def main():
     temporary_location = False
 
     if uploaded_file is not None:
-        filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
-        ## Split video into frames
-        generate_frames(filename)
-        ## Detect objects in frames
-        detect_Object()
-        search_object = st.text_input('search', 'Search....')
+        if os.path.exists('uploadedVideos'):     
+          filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
+          ## Split video into frames
+          generate_frames(filename)
+          ## Detect objects in frames
+          detect_Object()
+          search_object = st.text_input('search', 'Search....')
 
 
-        if st.text_input("", "Search..."):
-            search = st.text
-            result = detect_Object()
-            st.success('This Video contains {}'.format(result))
+          if st.text_input("", "Search..."):
+              search = st.text
+              result = detect_Object()
+              st.success('This Video contains {}'.format(result))
+          else:
+              print("Not found")
         else:
-            print("Not found")
+              os.mkdir('uploadedVideos')
+              return
 
 
 
