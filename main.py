@@ -40,11 +40,11 @@ def detect_Object():
     label = label[0][0]
     # print the classification
     print('%s (%.2f%%)' % (label[1], label[2] * 100))
-    global detected
-    detected['frame%d' %count] = label[1]
+    #global detected
+    #detected['frame%d' %count] = label[1]
     print('frame%d : ' %count, label[1])
-
     count = count + 1
+    
 ## Function to save the uploaded file
 def save_uploadedfile(uploaded_file):
     with open(os.path.join("uploadedVideos", uploaded_file.name), "wb") as f:
