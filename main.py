@@ -44,7 +44,7 @@ def detect_Object():
     #detected['frame%d' %count] = label[1]
     print('frame%d : ' %count, label[1])
 
-    objects = []
+    global objects
     objects.append(label[1])
     count = count + 1
   return objects
