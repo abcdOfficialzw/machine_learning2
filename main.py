@@ -123,6 +123,7 @@ def main():
           generate_frames(filename)
           st.info('video split successfully, bow detecting objects')
           ## Detect objects in frames
+          global objects
           objects = []
           detect_Object()
           search_object = st.text_input('search', 'Search....')
