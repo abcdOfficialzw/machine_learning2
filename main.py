@@ -77,7 +77,7 @@ def generate_frames(video):
 def search_for_objects(search):
       found = False
       for i in objects:
-            if list[i] == search:
+            if str(list[i]) == search:
                   global search_results
                   search_results.append(objects[i].index())
                   found = True
