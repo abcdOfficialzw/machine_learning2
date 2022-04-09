@@ -119,10 +119,12 @@ def main():
         if os.path.exists('uploadedVideos'):     
           filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
           ## Split video into frames
+          st.info('upload successful, now splitting into frames')
           generate_frames(filename)
+          st.info('video split successfully, bow detecting objects')
           ## Detect objects in frames
           global objects
-          objects = detect_Object()
+          detect_Object()
           search_object = st.text_input('search', 'Search....')
 
 
