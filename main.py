@@ -43,8 +43,12 @@ def detect_Object():
     #global detected
     #detected['frame%d' %count] = label[1]
     print('frame%d : ' %count, label[1])
+
+    objects = []
+    objects.append(label[1])
     count = count + 1
-    
+  return objects
+
 ## Function to save the uploaded file
 def save_uploadedfile(uploaded_file):
     with open(os.path.join("uploadedVideos", uploaded_file.name), "wb") as f:
@@ -58,7 +62,6 @@ def generate_frames(video):
   vidcap = cv2.VideoCapture(video)
   success, image = vidcap.read()
   count = 0
-
   while success:
     if os.path.exists('./frames'):
       cv2.imwrite("frames/frame%d.jpg" % count, image)  # save frame as JPEG file
@@ -70,9 +73,28 @@ def generate_frames(video):
       return
 
   return
-
+## Function to search for objects
+def search_for_objects(search):
+      found = False
+      for i in objects:
+            if list[i] == search:
+                  global search_results
+                  search_results.append(objects[i].index())
+                  found = True
+      if found == False:
+            st.info('The object you searched for is not in the video')
+            return
+      display_resulst(search_results)
+                  
+def display_resulst(search_results):
+      images = []
+      for i in search_results:
+            image = Image.open('./frames/frame%d' %i)
+            images = images.append(image)
+      st.image(images, 'Your result')
 
 def main():
+  
 
     """Object detection App"""
 
@@ -91,6 +113,7 @@ def main():
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
 
     temporary_location = False
+    search_results = []
 
     if uploaded_file is not None:
         if os.path.exists('uploadedVideos'):     
@@ -98,13 +121,13 @@ def main():
           ## Split video into frames
           generate_frames(filename)
           ## Detect objects in frames
-          detect_Object()
+          global objects
+          objects = detect_Object()
           search_object = st.text_input('search', 'Search....')
 
 
           if st.text_input("", "Search..."):
-              search = st.text
-              result = detect_Object()
+              result = find_searched_objects()
               st.success('This Video contains {}'.format(result))
           else:
               print("Not found")
