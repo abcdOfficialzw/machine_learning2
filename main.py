@@ -47,6 +47,7 @@ def detect_Object():
     global objects
     objects.append(label[1])
     count = count + 1
+    print(type(objects))
   return objects
 
 ## Function to save the uploaded file
@@ -77,7 +78,7 @@ def generate_frames(video):
 def search_for_objects(search):
       found = False
       for i in objects:
-            if str(objects[i]) == search:
+            if objects[i] == search:
                   global search_results
                   search_results.append(objects[i].index())
                   found = True
