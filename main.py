@@ -134,7 +134,7 @@ def main():
           if search_object:
               search_for_objects(search_object)
               
-              st.success('This Video contains {}'.format(result))
+              st.success('This Video contains {}'.format(search_object))
           else:
               print("Not found")
         else:
