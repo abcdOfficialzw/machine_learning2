@@ -85,13 +85,15 @@ def search_for_objects(search):
             st.info('The object you searched for is not in the video')
             return
       display_resulst(search_results)
-                  
+## Function to display images found                  
 def display_resulst(search_results):
       images = []
       for i in search_results:
             image = Image.open('./frames/frame%d' %i)
             images = images.append(image)
       st.image(images, 'Your result')
+
+
 
 def main():
   
@@ -129,8 +131,9 @@ def main():
           search_object = st.text_input('search', 'Search....')
 
 
-          if st.text_input("", "Search..."):
-              result = find_searched_objects()
+          if search_object:
+              search_for_objects(search_object)
+              
               st.success('This Video contains {}'.format(result))
           else:
               print("Not found")
