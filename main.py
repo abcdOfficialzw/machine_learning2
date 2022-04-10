@@ -134,15 +134,11 @@ def main():
           global objects
           objects = []
           detect_Object()
-          search_object = st.text_input('search', 'Search....')
-
-
-          if search_object:
+          search_object = st.text_input('search')
+          if st.button('Search'):
               search_for_objects(search_object)
-              
-              st.success('This Video contains {}'.format(search_object))
           else:
-              print("Not found")
+              st.info('Could not find your search')
         else:
               os.mkdir('uploadedVideos')
               return
