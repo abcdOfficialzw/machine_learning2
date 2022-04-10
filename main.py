@@ -1,3 +1,4 @@
+from turtle import onclick
 import streamlit as st
 import shutil
 import cv2
@@ -136,8 +137,7 @@ def main():
 
           ## Search object
           search_object = st.text_input('search')
-          if st.button('Search'):
-                search_for_objects(search_object)
+          st.button('Search', onclick=search_for_objects(search_object))
 
         else:
               os.mkdir('uploadedVideos')
