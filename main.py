@@ -119,6 +119,7 @@ def main():
     st.title("Detect and classify ")
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
     st.button('continue')
+    st_autorefresh(1, 1)
 
     temporary_location = False
     search_results = []
