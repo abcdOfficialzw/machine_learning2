@@ -77,10 +77,12 @@ def generate_frames(video):
 ## Function to search for objects
 def search_for_objects(search):
       found = False
-      for i in objects:
-            if objects[i] == search:
+      count = 0
+
+      while count < len(objects) - 1:
+            if objects[count] == search:
                   global search_results
-                  search_results.append(objects[i].index())
+                  search_results.append(objects[count].index())
                   found = True
       if found == False:
             st.info('The object you searched for is not in the video')
