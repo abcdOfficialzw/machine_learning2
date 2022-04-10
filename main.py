@@ -139,9 +139,7 @@ def main():
           if st.button('Search'):
             if search_for_objects(search_object):
                   display_resulst(search_results)
-            else:
-                  
-            return
+                  return
         else:
               ## create the directory
               os.mkdir('uploadedVideos')
