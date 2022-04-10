@@ -100,48 +100,47 @@ def display_resulst(search_results):
 
 
 def main():
-  
+  t = True
+  while t:
 
-    """Object detection App"""
+      """Object detection App"""
 
-    st.title("Object Detection App")
+      st.title("Object Detection App")
 
-    html_temp = """
-    <body style="background-color:red;">
-    <div style="background-color:teal ;padding:10px">
-    <h2 style="color:white;text-align:center;">Object Detecting WebApp</h2>
-    </div>
-    </body>
-    """
-    st.markdown(html_temp, unsafe_allow_html=True)
+      html_temp = """
+      <body style="background-color:red;">
+      <div style="background-color:teal ;padding:10px">
+      <h2 style="color:white;text-align:center;">Object Detecting WebApp</h2>
+      </div>
+      </body>
+      """
+      st.markdown(html_temp, unsafe_allow_html=True)
 
-    st.title("Detect and classify ")
-    uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
-    while uploaded_file is None:
-          pass
+      st.title("Detect and classify ")
+      uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
 
-    temporary_location = False
-    search_results = []
+      temporary_location = False
+      search_results = []
 
-    if uploaded_file is not None:
-        if os.path.exists('uploadedVideos'):     
-          filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
-          ## Split video into frames
-          st.info('upload successful, now splitting into frames')
-          generate_frames(filename)
-          st.info('video split successfully, bow detecting objects')
-          ## Detect objects in frames
-          global objects
-          objects = []
-          detect_Object()
-          search_object = st.text_input('search')
-          if st.button('Search'):
-              search_for_objects(search_object)
+      if uploaded_file is not None:
+          if os.path.exists('uploadedVideos'):     
+            filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
+            ## Split video into frames
+            st.info('upload successful, now splitting into frames')
+            generate_frames(filename)
+            st.info('video split successfully, bow detecting objects')
+            ## Detect objects in frames
+            global objects
+            objects = []
+            detect_Object()
+            search_object = st.text_input('search')
+            if st.button('Search'):
+                search_for_objects(search_object)
+            else:
+                st.info('Could not find your search')
           else:
-              st.info('Could not find your search')
-        else:
-              os.mkdir('uploadedVideos')
-              return
+                os.mkdir('uploadedVideos')
+                return
 
 
 
