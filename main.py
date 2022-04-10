@@ -61,7 +61,7 @@ def save_uploadedfile(uploaded_file):
       f.write(uploaded_file.getbuffer())
       global filename
       filename = uploaded_file.name
-      st.success("Saved File: {} to /uploadedVideos".format(uploaded_file.name))
+      st.success("Saved File: {} to uploadedVideos".format(uploaded_file.name))
       return filename
 ## Function to split video into frames
 def generate_frames(video):
@@ -77,7 +77,7 @@ def generate_frames(video):
     else:
       os.mkdir('frames')
       return
-
+  st.success('Your video has successfully been split into frames, now detecting objects')
   return
 ## Function to search for objects
 def search_for_objects(search):
@@ -116,21 +116,20 @@ def main():
     st.markdown(html_temp, unsafe_allow_html=True)
     st.title("Detect and classify ")
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
-    st.button('continue')
-    st_autorefresh(1, 1, '0')
+    if st.button('continue'):
+      st_autorefresh(1, 1, '0')
+      return
 
     temporary_location = False
     search_results = []
 
     if uploaded_file is not None:
-        st_autorefresh(1, 1, '1')
+        #st_autorefresh(1, 1, '1')
         if os.path.exists('uploadedVideos'):     
           filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
           ## Split video into frames
-          st.success('upload successful, now splitting into frames')
-          st_autorefresh(1,1,'3')
+          #st_autorefresh(1,1,'3')
           generate_frames(filename)
-          st.success('Your video has successfully been split into frames, now detecting objects')
           ## Detect objects in frames
           global objects
           objects = []
