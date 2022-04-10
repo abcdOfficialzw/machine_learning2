@@ -135,7 +135,7 @@ def main():
           objects = []
           detect_Object()
           search_object = st.text_input('search')
-          st.button('Search', onclick = search_for_objects(search_for_objects)):
+          st.button('Search', onclick = search_for_objects(search_for_objects))
         else:
               os.mkdir('uploadedVideos')
               return
