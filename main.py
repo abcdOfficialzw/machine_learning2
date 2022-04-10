@@ -121,6 +121,9 @@ def main():
     temporary_location = False
     search_results = []
 
+    while uploaded_file is None:
+          pass
+
     if uploaded_file is not None:
         if os.path.exists('uploadedVideos'):     
           filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
