@@ -12,6 +12,7 @@ import streamlit as st
 from PIL import Image
 import io
 from keras.applications.vgg16 import VGG16
+from streamlit_autorefresh import st_autorefresh
 # load the model
 model = VGG16()
 
@@ -117,6 +118,7 @@ def main():
 
     st.title("Detect and classify ")
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
+    st_autorefresh(interval =1, limit = 1)
 
     temporary_location = False
     search_results = []
