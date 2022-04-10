@@ -7,6 +7,7 @@
 
   Deployed on Streamlit
 """
+from tkinter.messagebox import RETRY
 import streamlit as st
 import shutil
 import cv2
@@ -141,11 +142,14 @@ def main():
 
           ## Search object
           search_object = st.text_input('search')
-          st.button('Search', onclick=search_for_objects(search_object))
-
+          if st.button('Search'):
+            search_for_objects(search_object)
+            return
         else:
               os.mkdir('uploadedVideos')
               return
+        return
+    return  
 
 
 
