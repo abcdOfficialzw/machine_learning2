@@ -78,7 +78,6 @@ def generate_frames(video):
 def search_for_objects(search):
       found = False
       count = 0
-
       while count < len(objects) - 1:
             if objects[count] == search:
                   global search_results
@@ -134,8 +133,12 @@ def main():
           global objects
           objects = []
           detect_Object()
+
+          ## Search object
           search_object = st.text_input('search')
-          st.button('Search', onclick = search_for_objects(search_for_objects))
+          if st.button('Search'):
+                search_for_objects(search_object)
+
         else:
               os.mkdir('uploadedVideos')
               return
