@@ -81,6 +81,7 @@ def generate_frames(video):
   return
 ## Function to search for objects
 def search_for_objects(search):
+      st.info('Searching')
       found = False
       count = 0
       while count < len(objects) - 1:
