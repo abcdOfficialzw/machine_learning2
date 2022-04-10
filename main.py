@@ -135,6 +135,7 @@ def main():
     st.markdown(html_temp, unsafe_allow_html=True)
 
     st.title("Detect and classify ")
+    global uploaded_file
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
     st.button('continue', onclick = launch())
     st_autorefresh(1, 1, '0')
