@@ -87,7 +87,7 @@ def search_for_objects(search):
                   global search_results
                   search_results.append(objects[count].index())
                   found = True
-                  count =+ 1
+                  count += 1
       if found == False:
             st.error('The object you searched for is not in the video')
             return
