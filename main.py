@@ -104,12 +104,8 @@ def display_resulst(search_results):
       
 
 def main():
-  
-
     """Object detection App"""
-
     st.title("Object Detection App")
-
     html_temp = """
     <body style="background-color:red;">
     <div style="background-color:teal ;padding:10px">
@@ -118,7 +114,6 @@ def main():
     </body>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
-
     st.title("Detect and classify ")
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
     st.button('continue')
@@ -132,21 +127,21 @@ def main():
         if os.path.exists('uploadedVideos'):     
           filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
           ## Split video into frames
-          st.info('upload successful, now splitting into frames')
+          st.success('upload successful, now splitting into frames')
           generate_frames(filename)
-          st.info('video split successfully, bow detecting objects')
+          st.success('Your video has successfully been split into frames, now detecting objects')
           ## Detect objects in frames
           global objects
           objects = []
           detect_Object()
-
           ## Search object
           search_object = st.text_input('search')
           if st.button('Search'):
             search_for_objects(search_object)
             return
         else:
-              os.mkdir('uploadedVideos')
+              ## create the directory
+              #os.mkdir('uploadedVideos')
               return
         return
     return  
