@@ -89,8 +89,9 @@ def search_for_objects(search):
 ## Function to display images found                  
 def display_resulst(search_results):
       images = []
-      for i in search_results:
-            image = Image.open('./frames/frame%d' %i)
+      count = 0
+      while count < len(search_results):
+            image = Image.open('./frames/frame%d' %count)
             images = images.append(image)
       st.image(images, 'Your result')
 
