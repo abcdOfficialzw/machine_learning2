@@ -1,3 +1,12 @@
+"""
+  Machine Learning Assignment
+  ===========================
+
+  Group Members:  Nyanhanga Takudzwa Titus R204543C
+                  Lloyd Masuko R204541G
+
+  Deployed on Streamlit
+"""
 import streamlit as st
 import shutil
 import cv2
@@ -39,11 +48,6 @@ def detect_Object():
     label = decode_predictions(object)
     # retrieve the most likely result, e.g. highest probability
     label = label[0][0]
-    # print the classification
-    print('%s (%.2f%%)' % (label[1], label[2] * 100))
-    #global detected
-    #detected['frame%d' %count] = label[1]
-    print('frame%d : ' %count, label[1])
 
     global objects
     objects.append(label[1])
@@ -56,7 +60,7 @@ def save_uploadedfile(uploaded_file):
       f.write(uploaded_file.getbuffer())
       global filename
       filename = uploaded_file.name
-      st.success("Saved File:{} to tempDir".format(uploaded_file.name))
+      st.success("Saved File: {} to /uploadedVideos".format(uploaded_file.name))
       return filename
 ## Function to split video into frames
 def generate_frames(video):
@@ -83,6 +87,7 @@ def search_for_objects(search):
                   global search_results
                   search_results.append(objects[count].index())
                   found = True
+                  count =+ 1
       if found == False:
             st.error('The object you searched for is not in the video')
             return
