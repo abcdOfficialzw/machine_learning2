@@ -117,12 +117,11 @@ def main():
 
     st.title("Detect and classify ")
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
+    while uploaded_file is None:
+          pass
 
     temporary_location = False
     search_results = []
-
-    while uploaded_file is None:
-          pass
 
     if uploaded_file is not None:
         if os.path.exists('uploadedVideos'):     
