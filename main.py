@@ -141,7 +141,7 @@ def main():
             return
         else:
               ## create the directory
-              #os.mkdir('uploadedVideos')
+              os.mkdir('uploadedVideos')
               return
         return
     return  
