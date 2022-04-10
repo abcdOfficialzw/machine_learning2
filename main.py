@@ -118,8 +118,7 @@ def main():
 
     st.title("Detect and classify ")
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
-    while uploaded_file is not  None:
-          pass
+    st.button('continue')
 
     temporary_location = False
     search_results = []
