@@ -96,27 +96,7 @@ def display_resulst(search_results):
             image = Image.open('./frames/frame%d' %count)
             images = images.append(image)
       st.image(images, 'Your result')
-## Function to launch the app
-def launch():
-          st_autorefresh(1, 1, '1')
-          if os.path.exists('uploadedVideos'):     
-            filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
-            ## Split video into frames
-            st.info('upload successful, now splitting into frames')
-            generate_frames(filename)
-            st.info('video split successfully, bow detecting objects')
-            ## Detect objects in frames
-            global objects
-            objects = []
-            detect_Object()
-            search_object = st.text_input('search')
-            st.button('Search', onclick = search_for_objects(search_for_objects))
-          else:
-                os.mkdir('uploadedVideos')
-                return
-
       
-
 
 def main():
   
@@ -135,13 +115,31 @@ def main():
     st.markdown(html_temp, unsafe_allow_html=True)
 
     st.title("Detect and classify ")
-    global uploaded_file
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
-    st.button('continue', onclick = launch())
+    st.button('continue')
     st_autorefresh(1, 1, '0')
 
+    temporary_location = False
     search_results = []
-    
+
+    if uploaded_file is not None:
+        st_autorefresh(1, 1, '1')
+        if os.path.exists('uploadedVideos'):     
+          filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
+          ## Split video into frames
+          st.info('upload successful, now splitting into frames')
+          generate_frames(filename)
+          st.info('video split successfully, bow detecting objects')
+          ## Detect objects in frames
+          global objects
+          objects = []
+          detect_Object()
+          search_object = st.text_input('search')
+          st.button('Search', onclick = search_for_objects(search_for_objects)):
+        else:
+              os.mkdir('uploadedVideos')
+              return
+
 
 
 
