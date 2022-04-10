@@ -89,10 +89,10 @@ def search_for_objects(search):
                   search_results.append(objects[count].index())
                   found = True
                   count += 1
+
       if found == False:
             st.error('The object you searched for is not in the video')
             return
-      display_resulst(search_results)
 ## Function to display images found                  
 def display_resulst(search_results):
       images = []
@@ -128,7 +128,7 @@ def main():
         if os.path.exists('uploadedVideos'):     
           filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
           ## Split video into frames
-          #st_autorefresh(1,1,'3')
+          st_autorefresh(1,1,'3')
           generate_frames(filename)
           ## Detect objects in frames
           global objects
@@ -137,7 +137,10 @@ def main():
           ## Search object
           search_object = st.text_input('search')
           if st.button('Search'):
-            search_for_objects(search_object)
+            if search_for_objects(search_object):
+                  display_resulst(search_results)
+            else:
+                  
             return
         else:
               ## create the directory
