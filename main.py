@@ -1,4 +1,3 @@
-from turtle import onclick
 import streamlit as st
 import shutil
 import cv2
