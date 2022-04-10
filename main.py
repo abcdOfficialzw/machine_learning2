@@ -1,3 +1,4 @@
+from turtle import onclick
 import streamlit as st
 import shutil
 import cv2
@@ -50,7 +51,6 @@ def detect_Object():
     count = count + 1
     print(type(objects))
   return objects
-
 ## Function to save the uploaded file
 def save_uploadedfile(uploaded_file):
     with open(os.path.join("uploadedVideos", uploaded_file.name), "wb") as f:
@@ -86,7 +86,7 @@ def search_for_objects(search):
                   search_results.append(objects[count].index())
                   found = True
       if found == False:
-            st.exception('The object you searched for is not in the video')
+            st.error('The object you searched for is not in the video')
             return
       display_resulst(search_results)
 ## Function to display images found                  
@@ -136,10 +136,10 @@ def main():
           global objects
           objects = []
           detect_Object()
-          search_object = st.text_input('search')
-          if st.button('Search'):
-              st_autorefresh(1,1, '2')
-              search_for_objects(search_object)
+          search_object = st.text_input('search', onclick = search_for_objects(search_for_objects))
+          #if st.button('Search'):
+          #    st_autorefresh(1,1, '2')
+          #    search_for_objects(search_object)
         else:
               os.mkdir('uploadedVideos')
               return
