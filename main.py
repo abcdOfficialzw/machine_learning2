@@ -128,6 +128,7 @@ def main():
           filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
           ## Split video into frames
           st.success('upload successful, now splitting into frames')
+          st_autorefresh(1,1,'3')
           generate_frames(filename)
           st.success('Your video has successfully been split into frames, now detecting objects')
           ## Detect objects in frames
