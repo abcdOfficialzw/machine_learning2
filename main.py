@@ -119,13 +119,13 @@ def main():
     st.title("Detect and classify ")
     uploaded_file = st.file_uploader("Choose a video...", type=["mp4"])
     st.button('continue')
-    st_autorefresh(1, 1)
+    st_autorefresh(1, 1, '0')
 
     temporary_location = False
     search_results = []
 
     if uploaded_file is not None:
-        st_autorefresh(1, 1)
+        st_autorefresh(1, 1, '1')
         if os.path.exists('uploadedVideos'):     
           filename = 'uploadedVideos/' + str(save_uploadedfile(uploaded_file))
           ## Split video into frames
@@ -138,7 +138,7 @@ def main():
           detect_Object()
           search_object = st.text_input('search')
           if st.button('Search'):
-              st_autorefresh(1,1)
+              st_autorefresh(1,1, '2')
               search_for_objects(search_object)
         else:
               os.mkdir('uploadedVideos')
