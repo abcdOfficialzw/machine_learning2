@@ -48,6 +48,7 @@ def detect_Object():
     label = decode_predictions(object)
     # retrieve the most likely result, e.g. highest probability
     label = label[0][0]
+    print('frame%d :' %count, label[1])
 
     global objects
     objects.append(label[1])
