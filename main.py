@@ -104,8 +104,8 @@ def display_resulst(search_results):
       
 
 def main():
-    """Object detection App"""
-    st.title("Object Detection App")
+    #"""Object detection App"""
+    #st.title("Object Detection App")
     html_temp = """
     <body style="background-color:red;">
     <div style="background-color:teal ;padding:10px">
