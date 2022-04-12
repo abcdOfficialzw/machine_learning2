@@ -8,7 +8,6 @@
   Deployed on Streamlit
 """
 ## Importing Dependancies
-import imp
 import streamlit as st
 import shutil
 import cv2
