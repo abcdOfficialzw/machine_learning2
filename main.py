@@ -53,7 +53,6 @@ def detect_Object():
     objects.append(label[1])
     count = count + 1
     print(type(objects))
-    st_autorefresh(1,1,'3675')
   return objects
 ## Function to save the uploaded file
 def save_uploadedfile(uploaded_file):
@@ -137,6 +136,7 @@ def main():
           global objects
           objects = []
           detect_Object()
+          st_autorefresh(1,1,'395')
           ## Search object
           search_object = st.text_input('search')
           if st.button('Search'):
