@@ -108,7 +108,7 @@ def main():
     #st.title("Object Detection App")
     html_temp = """
     <body style="background-color:red;">
-    <div style="background-color:teal ;padding:10px">
+    <div style="background-color:grey ;padding:10px">
     <h2 style="color:white;text-align:center;">Object Detecting WebApp</h2>
     </div>
     </body>
