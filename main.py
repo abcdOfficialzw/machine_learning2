@@ -49,11 +49,9 @@ def detect_Object():
     # retrieve the most likely result, e.g. highest probability
     label = label[0][0]
     print('frame%d :' %count, label[1])
-
     global objects
     objects.append(label[1])
     count = count + 1
-    print(type(objects))
   return objects
 ## Function to save the uploaded file
 def save_uploadedfile(uploaded_file):
