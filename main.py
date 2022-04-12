@@ -53,6 +53,7 @@ def detect_Object():
     objects.append(label[1])
     count = count + 1
     print(type(objects))
+    st_autorefresh(1,1,'3675h')
   return objects
 ## Function to save the uploaded file
 def save_uploadedfile(uploaded_file):
@@ -61,6 +62,7 @@ def save_uploadedfile(uploaded_file):
       global filename
       filename = uploaded_file.name
       st.success("Saved File: {} to uploadedVideos".format(uploaded_file.name))
+      st_autorefresh(1,1,'5654')
       return filename
 ## Function to split video into frames
 def generate_frames(video):
@@ -77,6 +79,7 @@ def generate_frames(video):
       os.mkdir('frames')
       return
   st.success('Your video has successfully been split into frames, now detecting objects')
+  st_autorefresh(1,1,'367')
   return
 ## Function to search for objects
 def search_for_objects(search):
